@@ -3,7 +3,10 @@ package com.maomiyibian.microservice.customer.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.maomiyibian.microservice.api.domain.User;
 import com.maomiyibian.microservice.api.service.UserService;
+import com.maomiyibian.microservice.common.page.Page;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * TODO: 类描述
@@ -29,5 +32,14 @@ public class UserController {
         return userService.queryUserByName(username);
     }
 
+    @GetMapping("/queryUserByPage")
+    public Page<User> queryUserByPage(Map<String,Object> parameter) throws Exception{
+        Page<User> userPage=new Page<>();
+        userPage.setPageCurrent(1);
+        userPage.setPageSize(30);
+        Page<User> result=userService.queryUserByPage(parameter,userPage);
+
+        return result;
+    }
 
 }

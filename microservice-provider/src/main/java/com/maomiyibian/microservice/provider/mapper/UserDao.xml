@@ -33,6 +33,52 @@
     where user_name = #{userName,jdbcType=VARCHAR}
   </select>
 
+  <select id="queryUserByPage" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List"/>
+    from USER
+    <where>
+      <if test="userName != null" >
+        user_name  like concat(concat('%',#{userName}),'%')
+      </if>
+      <if test="userPhoneNum != null" >
+        and user_phone_num like concat(concat('%',#{userPhoneNum}),'%')
+      </if>
+      <if test="wechatNum != null" >
+        and wechat_num like concat(concat('%',#{wechatNum}),'%')
+      </if>
+      <if test="qqNum != null" >
+        and qq_num like concat(concat('%',#{qqNum}),'%')
+      </if>
+      <if test="userStatus != null" >
+        and user_status=#{userStatus,jdbcType=CHAR}
+      </if>
+    </where>
+  </select>
+
+
+  <select id="queryUserCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+    SELECT COUNT(*)
+    from USER
+    <where>
+      <if test="userName != null" >
+        user_name  like concat(concat('%',#{userName}),'%')
+      </if>
+      <if test="userPhoneNum != null" >
+        and user_phone_num like concat(concat('%',#{userPhoneNum}),'%')
+      </if>
+      <if test="wechatNum != null" >
+        and wechat_num like concat(concat('%',#{wechatNum}),'%')
+      </if>
+      <if test="qqNum != null" >
+        and qq_num like concat(concat('%',#{qqNum}),'%')
+      </if>
+      <if test="userStatus != null" >
+        and user_status=#{userStatus,jdbcType=CHAR}
+      </if>
+    </where>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from user
     where id = #{id,jdbcType=BIGINT}

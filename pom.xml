@@ -10,6 +10,7 @@
         <module>microservice-api</module>
         <module>microservice-provider</module>
         <module>microservice-customer</module>
+        <module>microservice-common</module>
     </modules>
     <packaging>pom</packaging>
 
