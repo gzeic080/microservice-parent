@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.maomiyibian.microservice.api.domain.User;
 import com.maomiyibian.microservice.api.service.UserService;
 import com.maomiyibian.microservice.common.page.Page;
-import com.maomiyibian.microservice.provider.interceptor.DataServiceMybatis;
+import com.maomiyibian.microservice.provider.template.DataServiceMybatis;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
